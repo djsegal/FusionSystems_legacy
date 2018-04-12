@@ -1,5 +1,16 @@
 module FusionSystems
 
-# package code goes here
+  using DataStructures
+  using Unitful
+  using QuadGK
+  using SymPy
 
-end # module
+  include("abstracts.jl")
+  include("defaults.jl")
+
+  include("structs/index.jl")
+  include("methods/index.jl")
+
+  export Reactor
+
+end
