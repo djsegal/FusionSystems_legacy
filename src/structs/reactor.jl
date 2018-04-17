@@ -1,5 +1,5 @@
 mutable struct Reactor <: AbstractReactor
-  T_bar::AbstractFloat
+  T_bar::AbstractSymbol
 
   n_bar::AbstractSymbol
   I_P::AbstractSymbol
@@ -93,7 +93,7 @@ reactor_limits = [
   "P_E"
 ]
 
-function Reactor(cur_temp::AbstractFloat; raw_kwargs...)
+function Reactor(cur_temp::AbstractSymbol=T_bar_sym; raw_kwargs...)
   cur_kwargs = Dict(raw_kwargs)
   cur_inputs = deepcopy(reactor_defaults)
 

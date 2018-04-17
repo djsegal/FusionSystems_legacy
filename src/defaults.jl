@@ -1,3 +1,5 @@
+const T_bar_sym = symbols(:T_bar)
+
 const n_bar_sym = symbols(:n_bar)
 const I_P_sym = symbols(:I_P)
 
