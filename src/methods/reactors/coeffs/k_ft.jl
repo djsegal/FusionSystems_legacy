@@ -15,6 +15,7 @@ function K_FT(cur_reactor::AbstractReactor)
 
   cur_K *= ( 4.3 - 0.6 / cur_epsilon )
 
+  cur_K *= 1e6
 
   cur_K
 end
