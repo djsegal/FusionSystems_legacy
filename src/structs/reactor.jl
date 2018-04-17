@@ -93,7 +93,7 @@ reactor_limits = [
   "P_E"
 ]
 
-function Reactor(cur_temp::AbstractSymbol=T_bar_sym; raw_kwargs...)
+function Reactor(cur_temp::AbstractSymbol=T_bar_sym; is_symbolic::Bool=false, raw_kwargs...)
   cur_kwargs = Dict(raw_kwargs)
   cur_inputs = deepcopy(reactor_defaults)
 
@@ -109,6 +109,9 @@ function Reactor(cur_temp::AbstractSymbol=T_bar_sym; raw_kwargs...)
     values(cur_inputs)...,
     repmat([nothing], length(reactor_limits))...
   )
+
+  ( is_symbolic ) &&
+    ( cur_reactor.mode_scaling = symbol_scaling )
 
   cur_reactor
 end

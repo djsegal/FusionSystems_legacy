@@ -79,6 +79,15 @@ const atm_conversion =
 const wb_conversion =
   uconvert(u"Wb", Unitful.µ0 * 1u"MA*m") / 1u"Wb"
 
+const scaling_keys = keys(h_mode_scaling)
+
+const symbol_scaling = Dict(
+  zip(
+    scaling_keys,
+    map(cur_key -> symbols("alpha_$cur_key"), scaling_keys)
+  )
+)
+
 const reduced_mass = 1.124656e6
 
 const gamov_const = 34.3827
