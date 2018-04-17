@@ -5,7 +5,7 @@ module FusionSystems
   using DataStructures
   using Unitful
   using QuadGK
-  using SymPy
+  using SymEngine
 
   include("abstracts.jl")
   include("defaults.jl")

@@ -3,4 +3,4 @@ julia 0.6
 DataStructures
 Unitful
 QuadGK
-SymPy
+SymEngine
