@@ -33,11 +33,13 @@ function _C_B(cur_reactor::AbstractReactor)
 
   cur_C_B = norm_int(cur_func)
 
-  cur_C_B = 1 + cur_nu_n
+  cur_C_B *= 1 + cur_nu_n
 
   cur_C_B *= 1 + cur_nu_T
 
   cur_C_B *= cur_nu_n + 0.054 * cur_nu_T
+
+  cur_C_B
 end
 
 function _b_theta(cur_gamma::AbstractFloat, cur_rho::AbstractFloat)
