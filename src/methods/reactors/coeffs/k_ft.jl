@@ -7,7 +7,7 @@ function K_FT(cur_reactor::AbstractReactor)
 
   cur_K *= cur_reactor.Z_eff
 
-  cur_K /= cur_reactor.kappa_95
+  cur_K /= kappa_x(cur_reactor)
 
   cur_K /= cur_reactor.epsilon ^ 2
 

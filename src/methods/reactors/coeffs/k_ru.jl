@@ -13,7 +13,7 @@ end
 function _external_inductance_term(cur_reactor::AbstractReactor)
   cur_epsilon = cur_reactor.epsilon
 
-  cur_kappa = cur_reactor.kappa_95
+  cur_kappa = kappa_x(cur_reactor)
 
   cur_numerator = _b_HN(cur_epsilon)
 

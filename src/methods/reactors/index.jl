@@ -15,6 +15,9 @@ include("alpha_r.jl")
 
 include("phi_total.jl")
 
+include("delta_x.jl")
+include("kappa_x.jl")
+
 include("coeffs/index.jl")
 include("powers/index.jl")
 
