@@ -73,11 +73,13 @@ const h_mode_scaling = Dict(
   :P => 0.69
 )
 
-const atm_conversion =
-  uconvert(u"atm", 1e20u"keV/m^3") / 1u"atm"
+const atm_conversion = uconvert(
+  Unitful.atm, 1e20 * Unitful.keV / Unitful.m^3
+) / Unitful.atm
 
-const wb_conversion =
-  uconvert(u"Wb", Unitful.µ0 * 1u"MA*m") / 1u"Wb"
+const wb_conversion = uconvert(
+  Unitful.Wb, Unitful.µ0 * Unitful.MA * Unitful.m
+) / Unitful.Wb
 
 const scaling_keys = keys(h_mode_scaling)
 
