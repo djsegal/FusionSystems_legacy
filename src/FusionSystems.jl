@@ -8,6 +8,8 @@ module FusionSystems
   include("abstracts.jl")
   include("defaults.jl")
 
+  include("utils/index.jl")
+
   include("structs/index.jl")
   include("methods/index.jl")
 

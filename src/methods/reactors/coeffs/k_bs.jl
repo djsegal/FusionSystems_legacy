@@ -31,7 +31,7 @@ function _C_B(cur_reactor::AbstractReactor)
     cur_value
   end
 
-  cur_C_B = QuadGK.quadgk(cur_func, integral_zero, integral_one)[1]
+  cur_C_B = norm_int(cur_func)
 
   cur_C_B = 1 + cur_nu_n
 
