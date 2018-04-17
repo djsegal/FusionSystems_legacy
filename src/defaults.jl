@@ -1,10 +1,8 @@
 const n_bar_sym = symbols(:n_bar)
-const T_bar_sym = symbols(:T_bar)
+const I_P_sym = symbols(:I_P)
 
 const R_0_sym = symbols(:R_0)
 const B_0_sym = symbols(:B_0)
-
-const I_P_sym = symbols(:I_P)
 
 const sigma_v_sym = symbols(:sigma_v)
 

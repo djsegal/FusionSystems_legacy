@@ -1,9 +1,11 @@
 mutable struct Reactor <: AbstractReactor
+  T_bar::AbstractFloat
+
   n_bar::AbstractSymbol
-  T_bar::AbstractSymbol
+  I_P::AbstractSymbol
+
   R_0::AbstractSymbol
   B_0::AbstractSymbol
-  I_P::AbstractSymbol
 
   mode_scaling::Dict
 
@@ -51,10 +53,9 @@ end
 
 reactor_symbols = [
   n_bar_sym,
-  T_bar_sym,
+  I_P_sym,
   R_0_sym,
-  B_0_sym,
-  I_P_sym
+  B_0_sym
 ]
 
 reactor_defaults = OrderedDict(
@@ -92,7 +93,7 @@ reactor_limits = [
   "P_E"
 ]
 
-function Reactor(; raw_kwargs...)
+function Reactor(cur_temp::AbstractFloat; raw_kwargs...)
   cur_kwargs = Dict(raw_kwargs)
   cur_inputs = deepcopy(reactor_defaults)
 
@@ -103,6 +104,7 @@ function Reactor(; raw_kwargs...)
   end
 
   cur_reactor = Reactor(
+    cur_temp,
     reactor_symbols...,
     values(cur_inputs)...,
     repmat([nothing], length(reactor_limits))...
