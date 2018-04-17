@@ -76,3 +76,17 @@ const atm_conversion =
 
 const wb_conversion =
   uconvert(u"Wb", Unitful.µ0 * 1u"MA*m") / 1u"Wb"
+
+const reduced_mass = 1.124656e6
+
+const gamov_const = 34.3827
+
+const bosch_hale_coeffs = [
+  +1.17302e-9,
+  +1.51361e-2,
+  +7.51886e-2,
+  +4.60643e-3,
+  +1.35000e-2,
+  -1.06750e-4,
+  +1.36600e-5
+]
