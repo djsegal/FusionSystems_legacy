@@ -1,6 +1,7 @@
 julia 0.6
 
 DataStructures
+Parameters
+SymEngine
 Unitful
 QuadGK
-SymEngine

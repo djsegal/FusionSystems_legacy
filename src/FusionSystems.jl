@@ -3,9 +3,10 @@ __precompile__()
 module FusionSystems
 
   using DataStructures
+  using Parameters
+  using SymEngine
   using Unitful
   using QuadGK
-  using SymEngine
 
   include("abstracts.jl")
   include("defaults.jl")

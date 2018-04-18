@@ -1,117 +1,66 @@
-mutable struct Reactor <: AbstractReactor
-  T_bar::AbstractSymbol
+@with_kw mutable struct Reactor <: AbstractReactor
+  T_bar::AbstractSymbol = symbols(:T_bar)
 
-  n_bar::AbstractSymbol
-  I_P::AbstractSymbol
+  n_bar::AbstractSymbol = symbols(:n_bar)
+  I_P::AbstractSymbol = symbols(:I_P)
 
-  R_0::AbstractSymbol
-  B_0::AbstractSymbol
+  R_0::AbstractSymbol = symbols(:R_0)
+  B_0::AbstractSymbol = symbols(:B_0)
 
-  mode_scaling::Dict
+  mode_scaling::Dict = h_mode_scaling
 
-  is_pulsed::Bool
+  is_pulsed::Bool = true
 
-  H::AbstractFloat
-  Q::AbstractFloat
+  H::AbstractFloat = 1.0
+  Q::AbstractFloat = 39.86
 
-  epsilon::AbstractFloat
-  kappa_95::AbstractFloat
-  delta_95::AbstractFloat
+  epsilon::AbstractFloat = 0.3226
+  kappa_95::AbstractFloat = 1.590
+  delta_95::AbstractFloat = 0.333
 
-  nu_n::AbstractFloat
-  nu_T::AbstractFloat
+  nu_n::AbstractFloat = 1.00
+  nu_T::AbstractFloat = 1.45
 
-  Z_eff::AbstractFloat
-  f_D::AbstractFloat
+  Z_eff::AbstractFloat = 2.584
+  f_D::AbstractFloat = 0.9
 
-  A::AbstractFloat
+  A::AbstractFloat = 2.5
 
-  l_i::AbstractFloat
-  rho_m::AbstractFloat
+  l_i::AbstractFloat = 1.155
+  rho_m::AbstractFloat = 0.6
 
-  N_G::AbstractFloat
+  N_G::AbstractFloat = 1.2
 
-  eta_CD::AbstractFloat
-  eta_T::AbstractFloat
+  eta_CD::AbstractFloat = 0.256
+  eta_T::AbstractFloat = 0.352
 
-  tau_FT::AbstractFloat
-  C_saw::AbstractFloat
-  C_ejima::AbstractFloat
+  tau_FT::AbstractFloat = 7200.0
+  C_saw::AbstractFloat = 1.0
+  C_ejima::AbstractFloat = 0.3
 
-  B_OH::AbstractFloat
-  R_OH::AbstractFloat
-  dR_OH::AbstractFloat
+  B_OH::AbstractFloat = 12.8
+  R_OH::AbstractFloat = 2.89
+  dR_OH::AbstractFloat = 0.82
 
-  max_beta_N::AbstractFloat
-  max_q_95::AbstractFloat
-  max_P_E::AbstractFloat
+  max_beta_N::AbstractFloat = 0.02591
+  max_q_95::AbstractFloat = 3.247
+  max_P_E::AbstractFloat = 1000.0
 
-  beta_N::AbstractCalculated
-  q_95::AbstractCalculated
-  P_E::AbstractCalculated
+  beta_N::AbstractCalculated = nothing
+  q_95::AbstractCalculated = nothing
+  P_E::AbstractCalculated = nothing
 end
 
-reactor_symbols = [
-  n_bar_sym,
-  I_P_sym,
-  R_0_sym,
-  B_0_sym
-]
-
-reactor_defaults = OrderedDict(
-  :mode_scaling => h_mode_scaling,
-  :is_pulsed => default_is_pulsed,
-  :H => default_H,
-  :Q => default_Q,
-  :epsilon => default_epsilon,
-  :kappa_95 => default_kappa_95,
-  :delta_95 => default_delta_95,
-  :nu_n => default_nu_n,
-  :nu_T => default_nu_T,
-  :Z_eff => default_Z_eff,
-  :f_D => default_f_D,
-  :A => default_A,
-  :l_i => default_l_i,
-  :rho_m => default_rho_m,
-  :N_G => default_N_G,
-  :eta_CD => default_eta_CD,
-  :eta_T => default_eta_T,
-  :tau_FT => default_tau_FT,
-  :C_saw => default_C_saw,
-  :C_ejima => default_C_ejima,
-  :B_OH => default_B_OH,
-  :R_OH => default_R_OH,
-  :dR_OH => default_dR_OH,
-  :max_beta_N => default_max_beta_N,
-  :max_q_95 => default_max_q_95,
-  :max_P_E => default_max_P_E
-)
-
-reactor_limits = [
-  "beta_N",
-  "q_95",
-  "P_E"
-]
-
-function Reactor(cur_temp::AbstractSymbol=T_bar_sym; is_symbolic::Bool=false, raw_kwargs...)
-  cur_kwargs = Dict(raw_kwargs)
-  cur_inputs = deepcopy(reactor_defaults)
-
-  for cur_key in keys(cur_inputs)
-    haskey(cur_kwargs, cur_key) || continue
-
-    cur_inputs[cur_key] = cur_kwargs[cur_key]
-  end
-
-  cur_reactor = Reactor(
-    cur_temp,
-    reactor_symbols...,
-    values(cur_inputs)...,
-    repmat([nothing], length(reactor_limits))...
+function Reactor(cur_temp::AbstractSymbol; cur_kwargs...)
+  Reactor(
+    T_bar = cur_temp,
+    cur_kwargs...
   )
+end
 
-  ( is_symbolic ) &&
-    ( cur_reactor.mode_scaling = symbol_scaling )
-
-  cur_reactor
+function SymbolicReactor(; cur_kwargs...)
+  Reactor(
+    mode_scaling = symbol_scaling,
+    cur_kwargs...
+  )
 end
