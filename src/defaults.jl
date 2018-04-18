@@ -1,7 +1,3 @@
-const sigma_v_sym = symbols(:sigma_v)
-
-const bootstrap_gamma_sym = symbols(:bootstrap_gamma)
-
 const integral_offset = 1e-8
 
 const integral_zero = 0.0 + integral_offset
@@ -28,13 +24,6 @@ const wb_conversion = uconvert(
 ) / Unitful.Wb
 
 const scaling_keys = keys(h_mode_scaling)
-
-const symbol_scaling = Dict(
-  zip(
-    scaling_keys,
-    map(cur_key -> symbols("alpha_$cur_key"), scaling_keys)
-  )
-)
 
 const reduced_mass = 1.124656e6
 
