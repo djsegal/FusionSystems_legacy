@@ -10,6 +10,7 @@
   mode_scaling::Dict = h_mode_scaling
 
   is_pulsed::Bool = true
+  is_symbolic::Bool = false
 
   H::AbstractFloat = 1.0
   Q::AbstractFloat = 39.86
@@ -67,6 +68,7 @@ end
 
 function SymbolicReactor(; cur_kwargs...)
   Reactor(
+    is_symbolic = true,
     mode_scaling = symbol_scaling,
     cur_kwargs...
   )
