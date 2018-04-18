@@ -51,6 +51,13 @@
   P_E::AbstractCalculated = nothing
 end
 
+function Reactor(cur_temp::Int; cur_kwargs...)
+  Reactor(
+    float(cur_temp),
+    cur_kwargs...
+  )
+end
+
 function Reactor(cur_temp::AbstractSymbol; cur_kwargs...)
   Reactor(
     T_bar = cur_temp,
