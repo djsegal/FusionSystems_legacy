@@ -1,4 +1,4 @@
-function geom_factor(cur_reactor::AbstractReactor)
+@symbol_func function geom_factor(cur_reactor::AbstractReactor)
   cur_delta = cur_reactor.delta_95
 
   cur_factor = 9.0

@@ -1,4 +1,4 @@
-function tau_E(cur_reactor::AbstractReactor)
+@symbol_func function tau_E(cur_reactor::AbstractReactor)
   cur_scaling = cur_reactor.mode_scaling
 
   cur_tau_E = cur_scaling[:constant]

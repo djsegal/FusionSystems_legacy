@@ -1,4 +1,4 @@
-function alpha_n(cur_reactor::AbstractReactor)
+@symbol_func function alpha_n(cur_reactor::AbstractReactor)
   cur_scaling = cur_reactor.mode_scaling
 
   cur_alpha = 1.0

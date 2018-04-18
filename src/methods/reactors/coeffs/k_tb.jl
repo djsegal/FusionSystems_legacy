@@ -1,4 +1,4 @@
-function K_TB(cur_reactor::AbstractReactor)
+@symbol_func function K_TB(cur_reactor::AbstractReactor)
   cur_K = 4.027e-2
 
   cur_K *= K_G(cur_reactor)

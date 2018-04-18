@@ -1,4 +1,4 @@
-function K_FT(cur_reactor::AbstractReactor)
+@symbol_func function K_FT(cur_reactor::AbstractReactor)
   cur_epsilon = cur_reactor.epsilon
 
   cur_K = 6.8e-8

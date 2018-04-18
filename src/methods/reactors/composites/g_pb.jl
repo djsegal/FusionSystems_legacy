@@ -1,4 +1,4 @@
-function G_PB(cur_reactor::AbstractReactor)
+@symbol_func function G_PB(cur_reactor::AbstractReactor)
   cur_scaling = cur_reactor.mode_scaling
 
   cur_alpha_I = alpha_I(cur_reactor)

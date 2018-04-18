@@ -1,4 +1,4 @@
-function phi_total(cur_reactor::AbstractReactor)
+@symbol_func function phi_total(cur_reactor::AbstractReactor)
   cur_phi = pi
 
   cur_R_OH = cur_reactor.R_OH + cur_reactor.dR_OH

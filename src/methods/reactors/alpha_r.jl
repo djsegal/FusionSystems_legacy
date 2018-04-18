@@ -1,4 +1,4 @@
-function alpha_R(cur_reactor::AbstractReactor)
+@symbol_func function alpha_R(cur_reactor::AbstractReactor)
   cur_scaling = cur_reactor.mode_scaling
 
   cur_alpha = cur_scaling[:R]

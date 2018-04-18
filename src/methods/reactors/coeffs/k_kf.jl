@@ -1,4 +1,4 @@
-function K_KF(cur_reactor::AbstractReactor)
+@symbol_func function K_KF(cur_reactor::AbstractReactor)
   cur_K = cur_reactor.max_q_95
 
   cur_K /= 5

@@ -1,4 +1,4 @@
-function K_BS(cur_reactor::AbstractReactor)
+@symbol_func function K_BS(cur_reactor::AbstractReactor)
   cur_K = 4.879
 
   cur_K *= 1 + cur_reactor.kappa_95 ^ 2

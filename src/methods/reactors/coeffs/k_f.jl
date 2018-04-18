@@ -1,4 +1,4 @@
-function K_F(cur_reactor::AbstractReactor)
+@symbol_func function K_F(cur_reactor::AbstractReactor)
   cur_K = 278.3
 
   cur_K *= cur_reactor.f_D ^ 2

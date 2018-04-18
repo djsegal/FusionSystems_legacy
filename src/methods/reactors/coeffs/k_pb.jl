@@ -1,4 +1,4 @@
-function K_PB(cur_reactor::AbstractReactor)
+@symbol_func function K_PB(cur_reactor::AbstractReactor)
   cur_scaling = cur_reactor.mode_scaling
 
   cur_K = K_law(cur_reactor)

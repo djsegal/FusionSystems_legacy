@@ -1,4 +1,4 @@
-function G_I(cur_reactor::AbstractReactor)
+@symbol_func function G_I(cur_reactor::AbstractReactor)
   cur_is_pulsed = cur_reactor.is_pulsed
 
   cur_func = cur_is_pulsed ? _G_I_P : _G_I_S

@@ -1,4 +1,4 @@
-function K_RU(cur_reactor::AbstractReactor)
+@symbol_func function K_RU(cur_reactor::AbstractReactor)
   cur_K = cur_reactor.C_ejima
 
   cur_K += cur_reactor.l_i / 2

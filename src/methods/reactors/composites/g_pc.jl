@@ -1,4 +1,4 @@
-function G_PC(cur_reactor::AbstractReactor)
+@symbol_func function G_PC(cur_reactor::AbstractReactor)
   cur_G = G_I(cur_reactor) ^ 2
 
   cur_G *= sigma_v_sym

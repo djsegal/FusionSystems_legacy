@@ -1,4 +1,4 @@
-function K_G(cur_reactor::AbstractReactor)
+@symbol_func function K_G(cur_reactor::AbstractReactor)
   cur_nu_n = cur_reactor.nu_n
 
   cur_K = 2.0
