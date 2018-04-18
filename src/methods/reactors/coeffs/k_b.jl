@@ -7,7 +7,7 @@
 
   cur_K *= ( 1 + cur_nu_n ) ^ 2
 
-  cur_K *= ( 1 + cur_nu_T ) ^ (1/2)
+  cur_K *= sqrt( 1 + cur_nu_T )
 
   cur_K /= 1 + 2 * cur_nu_n + 0.5 * cur_nu_T
 

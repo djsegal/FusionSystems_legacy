@@ -37,7 +37,7 @@ function _bosch_hale(cur_temp::AbstractFloat)
 
   cur_reactivity /= sqrt(reduced_mass)
 
-  cur_reactivity /= cur_temp ^ (3/2)
+  cur_reactivity /= sqrt(cur_temp) ^ 3
 
   cur_reactivity *= exp(-3 * cur_xi)
 

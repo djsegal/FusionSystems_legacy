@@ -5,7 +5,7 @@
 
   cur_K /= 2
 
-  cur_K *= cur_reactor.epsilon ^ (5/2)
+  cur_K *= sqrt(cur_reactor.epsilon) ^ 5
 
   cur_K *= _C_B(cur_reactor)
 
@@ -24,7 +24,7 @@ function _C_B(cur_reactor::AbstractReactor)
 
     cur_value ^= cur_nu_n + cur_nu_T - 1
 
-    cur_value *= cur_rho ^ (5/2)
+    cur_value *= sqrt(cur_rho) ^ 5
 
     cur_value /= _b_theta(cur_gamma, cur_rho)
 

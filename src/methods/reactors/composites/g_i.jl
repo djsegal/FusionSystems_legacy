@@ -15,7 +15,7 @@ function _G_I_P(cur_reactor::AbstractReactor)
 
   cur_numerator *= cur_reactor.R_0
 
-  cur_numerator *= cur_reactor.T_bar ^ (1/2)
+  cur_numerator *= sqrt(cur_reactor.T_bar)
 
   cur_numerator += K_FT(cur_reactor)
 
@@ -23,7 +23,7 @@ function _G_I_P(cur_reactor::AbstractReactor)
 
   cur_denominator *= cur_reactor.R_0 ^ 2
 
-  cur_denominator *= cur_reactor.T_bar ^ (3/2)
+  cur_denominator *= sqrt(cur_reactor.T_bar) ^ 3
 
   cur_denominator += K_FT(cur_reactor)
 
