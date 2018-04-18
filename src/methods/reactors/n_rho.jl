@@ -1,4 +1,4 @@
-function n_rho(cur_reactor::AbstractReactor, cur_rho::AbstractFloat)
+function n_rho(cur_reactor::AbstractReactor, cur_rho::AbstractSymbol=rho_sym)
   cur_n_bar = cur_reactor.n_bar
 
   cur_nu_n = cur_reactor.nu_n

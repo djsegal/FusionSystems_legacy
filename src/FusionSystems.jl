@@ -19,6 +19,8 @@ module FusionSystems
   export Reactor
 
   function __init__()
+    global const rho_sym = symbols(:rho)
+
     global const sigma_v_sym = symbols(:sigma_v)
 
     global const bootstrap_gamma_sym = symbols(:bootstrap_gamma)
