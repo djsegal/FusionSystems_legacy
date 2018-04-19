@@ -37,7 +37,7 @@ end
 function _G_I_S(cur_reactor::AbstractReactor)
   cur_G = 1.0
 
-  cur_G -= K_LH(cur_reactor) * sigma_v_sym
+  cur_G -= K_LH(cur_reactor) * cur_reactor.sigma_v
 
   cur_G ^= -1
 

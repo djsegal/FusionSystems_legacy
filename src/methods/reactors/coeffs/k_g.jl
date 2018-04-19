@@ -3,7 +3,7 @@
 
   cur_K = 2.0
 
-  cur_K /= sqrt(pi) ^ 3
+  cur_K /= sqrt(cur_reactor.pi) ^ 3
 
   cur_K *= cur_reactor.N_G
 

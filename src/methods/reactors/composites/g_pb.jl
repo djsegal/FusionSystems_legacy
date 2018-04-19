@@ -9,7 +9,7 @@
 
   cur_G /= cur_reactor.R_0 ^ alpha_R_star(cur_reactor)
 
-  cur_G *= sigma_v_sym ^ cur_scaling[:P]
+  cur_G *= cur_reactor.sigma_v ^ cur_scaling[:P]
 
   cur_G /= G_I(cur_reactor) ^ cur_alpha_I_star
 

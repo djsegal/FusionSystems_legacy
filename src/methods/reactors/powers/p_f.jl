@@ -5,7 +5,7 @@
 
   cur_P *= cur_reactor.n_bar ^ 2
 
-  cur_P *= sigma_v_sym
+  cur_P *= cur_reactor.sigma_v
 
   cur_P
 end

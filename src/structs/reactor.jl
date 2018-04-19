@@ -7,6 +7,8 @@
   R_0::AbstractSymbol = symbols(:R_0)
   B_0::AbstractSymbol = symbols(:B_0)
 
+  sigma_v::AbstractSymbol = symbols(:sigma_v)
+
   mode_scaling::Dict = h_mode_scaling
 
   is_pulsed::Bool = true
@@ -38,6 +40,8 @@
   tau_FT::AbstractSymbol = 7200.0
   C_saw::AbstractSymbol = 1.0
   C_ejima::AbstractSymbol = 0.3
+
+  pi::AbstractSymbol = AbstractFloat(Base.pi)
 
   B_OH::AbstractSymbol = 12.8
   R_OH::AbstractSymbol = 2.89
