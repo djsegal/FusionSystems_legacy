@@ -9,23 +9,21 @@
 end
 
 function _G_I_P(cur_reactor::AbstractReactor)
-  cur_numerator = phi_total(cur_reactor)
-
-  cur_numerator /= K_I(cur_reactor)
+  cur_numerator = K_UP(cur_reactor)
 
   cur_numerator *= cur_reactor.R_0
 
   cur_numerator *= sqrt(cur_reactor.T_bar)
 
-  cur_numerator += K_FT(cur_reactor)
+  cur_numerator += 1
 
-  cur_denominator = K_RU(cur_reactor)
+  cur_denominator = K_DN(cur_reactor)
 
   cur_denominator *= cur_reactor.R_0 ^ 2
 
   cur_denominator *= sqrt(cur_reactor.T_bar) ^ 3
 
-  cur_denominator += K_FT(cur_reactor)
+  cur_denominator += 1
 
   cur_G = cur_numerator
 

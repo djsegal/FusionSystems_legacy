@@ -15,6 +15,9 @@ include("k_ru.jl")
 include("k_ft.jl")
 include("k_lh.jl")
 
+include("k_up.jl")
+include("k_dn.jl")
+
 include("k_pb.jl")
 
 include("k_tb.jl")
