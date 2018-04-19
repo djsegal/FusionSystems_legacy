@@ -18,6 +18,8 @@ module FusionSystems
   include("structs/index.jl")
   include("methods/index.jl")
 
+  include("decks/index.jl")
+
   export Reactor
 
   function __init__()
