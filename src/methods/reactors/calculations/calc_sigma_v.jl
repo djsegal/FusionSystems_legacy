@@ -1,4 +1,4 @@
-function reactivity(cur_reactor::AbstractReactor)
+@symbol_func function calc_sigma_v(cur_reactor::AbstractReactor)
   cur_nu_n = cur_reactor.nu_n
 
   cur_func = function (cur_rho)
@@ -15,6 +15,9 @@ function reactivity(cur_reactor::AbstractReactor)
     cur_value
   end
 
+  cur_reactor.is_symbolic &&
+    ( cur_func = cur_func(rho_sym) )
+
   cur_sigma_v = norm_int(cur_func)
 
   cur_sigma_v *= ( 1 + cur_nu_n ) ^ 2
@@ -24,26 +27,28 @@ function reactivity(cur_reactor::AbstractReactor)
   cur_sigma_v
 end
 
+_bosch_hale(::SymEngine.Basic) = symbols(:sigma_v_ave)
+
 function _bosch_hale(cur_temp::AbstractFloat)
   cur_theta = _bosch_hale_theta(cur_temp)
 
   cur_xi = _bosch_hale_xi(cur_theta)
 
-  cur_reactivity = bosch_hale_coeffs[1]
+  cur_sigma_v_ave = bosch_hale_coeffs[1]
 
-  cur_reactivity *= cur_theta
+  cur_sigma_v_ave *= cur_theta
 
-  cur_reactivity *= sqrt(cur_xi)
+  cur_sigma_v_ave *= sqrt(cur_xi)
 
-  cur_reactivity /= sqrt(reduced_mass)
+  cur_sigma_v_ave /= sqrt(reduced_mass)
 
-  cur_reactivity /= sqrt(cur_temp) ^ 3
+  cur_sigma_v_ave /= sqrt(cur_temp) ^ 3
 
-  cur_reactivity *= exp(-3 * cur_xi)
+  cur_sigma_v_ave *= exp(-3 * cur_xi)
 
-  cur_reactivity *= 1e-6
+  cur_sigma_v_ave *= 1e-6
 
-  cur_reactivity
+  cur_sigma_v_ave
 end
 
 function _bosch_hale_theta(cur_temp::AbstractFloat)

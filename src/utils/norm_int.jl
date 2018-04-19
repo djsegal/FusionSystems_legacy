@@ -7,3 +7,7 @@ function norm_int(cur_func::Function)
 
   cur_value
 end
+
+function norm_int(cur_func::SymEngine.Basic)
+  [1, cur_func]
+end

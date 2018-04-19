@@ -31,6 +31,9 @@ end
     cur_value
   end
 
+  cur_reactor.is_symbolic &&
+    ( cur_func = cur_func(rho_sym) )
+
   cur_C_B = norm_int(cur_func)
 
   cur_C_B *= 1 + cur_nu_n
@@ -42,7 +45,16 @@ end
   cur_C_B
 end
 
+function _b_theta(cur_gamma::SymEngine.Basic, cur_rho::SymEngine.Basic, use_default::Bool=false)
+  use_default && return _b_theta_default(cur_gamma, cur_rho)
+  symbols(:b_theta)
+end
+
 function _b_theta(cur_gamma::AbstractFloat, cur_rho::AbstractFloat)
+  _b_theta_default(cur_gamma, cur_rho)
+end
+
+function _b_theta_default(cur_gamma::AbstractSymbol, cur_rho::AbstractSymbol)
   cur_repeat = 1 + cur_gamma
 
   cur_b_theta = cur_gamma * cur_rho ^ 2

@@ -34,7 +34,34 @@ end
   cur_term
 end
 
+function _a_HN(cur_epsilon::SymEngine.Basic, use_default::Bool=false)
+  use_default && return _a_HN_default(cur_epsilon)
+  symbols(:a_HN)
+end
+
+function _b_HN(cur_epsilon::SymEngine.Basic, use_default::Bool=false)
+  use_default && return _b_HN_default(cur_epsilon)
+  symbols(:b_HN)
+end
+
+function _d_HN(cur_epsilon::SymEngine.Basic, use_default::Bool=false)
+  use_default && return _d_HN_default(cur_epsilon)
+  symbols(:d_HN)
+end
+
 function _a_HN(cur_epsilon::AbstractFloat)
+  _a_HN_default(cur_epsilon)
+end
+
+function _b_HN(cur_epsilon::AbstractFloat)
+  _b_HN_default(cur_epsilon)
+end
+
+function _d_HN(cur_epsilon::AbstractFloat)
+  _d_HN_default(cur_epsilon)
+end
+
+function _a_HN_default(cur_epsilon::AbstractSymbol)
   cur_a = 2.0
 
   cur_a += 9.25 * sqrt(cur_epsilon)
@@ -44,7 +71,7 @@ function _a_HN(cur_epsilon::AbstractFloat)
   cur_a
 end
 
-function _b_HN(cur_epsilon::AbstractFloat)
+function _b_HN_default(cur_epsilon::AbstractSymbol)
   cur_b = 1.0
 
   cur_b += 1.81 * sqrt(cur_epsilon)
@@ -56,7 +83,7 @@ function _b_HN(cur_epsilon::AbstractFloat)
   cur_b
 end
 
-function _d_HN(cur_epsilon::AbstractFloat)
+function _d_HN_default(cur_epsilon::AbstractSymbol)
   cur_sqrt_epsilon = sqrt(cur_epsilon)
 
   cur_d = 1.0

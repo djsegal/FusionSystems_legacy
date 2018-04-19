@@ -12,7 +12,7 @@
   cur_factor
 end
 
-function _x_aa_of_pi(cur_delta::AbstractFloat)
+function _x_aa_of_pi(cur_delta::AbstractSymbol)
   cur_x_aa_of_pi = 1.0
 
   cur_x_aa_of_pi -= cur_delta ^ 2
