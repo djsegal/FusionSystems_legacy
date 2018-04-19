@@ -12,7 +12,7 @@
   cur_K
 end
 
-function _C_B(cur_reactor::AbstractReactor)
+@symbol_func function _C_B(cur_reactor::AbstractReactor)
   cur_nu_n = cur_reactor.nu_n
 
   cur_nu_T = cur_reactor.nu_T

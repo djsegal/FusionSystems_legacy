@@ -1,4 +1,4 @@
-function P_F(cur_reactor::AbstractReactor)
+@symbol_func function P_F(cur_reactor::AbstractReactor)
   cur_P = K_F(cur_reactor)
 
   cur_P *= cur_reactor.R_0 ^ 3

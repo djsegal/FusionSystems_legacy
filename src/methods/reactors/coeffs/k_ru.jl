@@ -10,7 +10,7 @@
   cur_K
 end
 
-function _external_inductance_term(cur_reactor::AbstractReactor)
+@symbol_func function _external_inductance_term(cur_reactor::AbstractReactor)
   cur_epsilon = cur_reactor.epsilon
 
   cur_kappa = kappa_x(cur_reactor)

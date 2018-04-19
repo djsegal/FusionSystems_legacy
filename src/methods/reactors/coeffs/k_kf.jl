@@ -12,7 +12,7 @@
   cur_K
 end
 
-function _f_q(cur_reactor::AbstractReactor)
+@symbol_func function _f_q(cur_reactor::AbstractReactor)
   cur_epsilon = cur_reactor.epsilon
 
   cur_kappa = cur_reactor.kappa_95
