@@ -14,6 +14,9 @@
   is_pulsed::Bool = true
   is_symbolic::Bool = false
 
+  is_solved::Bool = false
+  is_good::Bool = true
+
   H::AbstractSymbol = 1.0
   Q::AbstractSymbol = 39.86
 
@@ -51,31 +54,67 @@
   max_q_95::AbstractSymbol = 3.247
   max_P_E::AbstractSymbol = 1000.0
 
+  tau_E::AbstractCalculated = nothing
+  p_bar::AbstractCalculated = nothing
+  P_F::AbstractCalculated = nothing
+
   beta_N::AbstractCalculated = nothing
   q_95::AbstractCalculated = nothing
   P_E::AbstractCalculated = nothing
+
+  norm_beta_N::AbstractCalculated = nothing
+  norm_q_95::AbstractCalculated = nothing
+  norm_P_E::AbstractCalculated = nothing
+
+  f_BS::AbstractCalculated = nothing
+
+  volume::AbstractCalculated = nothing
+
+  magnetic_energy::AbstractCalculated = nothing
+  cost::AbstractCalculated = nothing
 end
 
-function Reactor(cur_temp::Int; cur_kwargs...)
-  Reactor(
-    float(cur_temp),
-    cur_kwargs...
-  )
+function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs)
+  for (cur_key, cur_value) in cur_kwargs
+    setfield!(cur_reactor, cur_key, cur_value)
+  end
 end
 
 function Reactor(cur_temp::AbstractSymbol; cur_kwargs...)
-  Reactor(
-    T_bar = cur_temp,
-    cur_kwargs...
-  )
+  cur_dict = Dict(cur_kwargs)
+
+  if haskey(cur_dict, :deck)
+    cur_deck_symbol = Symbol("$(cur_dict[:deck])_deck")
+    cur_deck_func = getfield(FusionSystems, cur_deck_symbol)
+
+    cur_reactor = cur_deck_func()
+  else
+    cur_reactor = Reactor()
+  end
+
+  delete!(cur_dict, :deck)
+
+  cur_reactor.T_bar = cur_temp
+
+  _Reactor!(cur_reactor, cur_dict)
+
+  cur_reactor
 end
 
 function SymbolicReactor(; cur_kwargs...)
+  cur_dict = Dict(cur_kwargs)
+
+  cur_scaling = haskey(cur_dict, :mode_scaling) ?
+    cur_dict[:mode_scaling] : symbol_scaling
+
+  delete!(cur_dict, :mode_scaling)
+
   cur_reactor = Reactor(
     is_symbolic = true,
-    mode_scaling = symbol_scaling,
-    cur_kwargs...
+    mode_scaling = cur_scaling
   )
+
+  _Reactor!(cur_reactor, cur_dict)
 
   for cur_field_name in fieldnames(cur_reactor)
     cur_field = getfield(cur_reactor, cur_field_name)
