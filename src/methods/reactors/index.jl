@@ -23,3 +23,5 @@ include("coeffs/index.jl")
 include("powers/index.jl")
 
 include("composites/index.jl")
+include("conversions/index.jl")
+

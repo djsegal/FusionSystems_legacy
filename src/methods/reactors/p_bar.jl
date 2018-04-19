@@ -1,5 +1,5 @@
 function p_bar(cur_reactor::AbstractReactor)
-  cur_p_bar = atm_conversion
+  cur_p_bar = atm_conversion(cur_reactor)
 
   cur_p_bar *= 1 + cur_reactor.f_D
 

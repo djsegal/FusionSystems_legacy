@@ -5,7 +5,7 @@
 
   cur_K += _external_inductance_term(cur_reactor)
 
-  cur_K *= wb_conversion
+  cur_K *= wb_conversion(cur_reactor)
 
   cur_K
 end

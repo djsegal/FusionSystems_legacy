@@ -15,14 +15,6 @@ const h_mode_scaling = Dict(
   :P => 0.69
 )
 
-const atm_conversion = uconvert(
-  Unitful.atm, 1e20 * Unitful.keV / Unitful.m^3
-) / Unitful.atm
-
-const wb_conversion = uconvert(
-  Unitful.Wb, Unitful.µ0 * Unitful.MA * Unitful.m
-) / Unitful.Wb
-
 const scaling_keys = keys(h_mode_scaling)
 
 const reduced_mass = 1.124656e6
