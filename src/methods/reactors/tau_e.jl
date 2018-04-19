@@ -3,6 +3,8 @@
 
   cur_tau_E = cur_scaling[:constant]
 
+  cur_tau_E *= cur_reactor.H
+
   cur_tau_E *= cur_reactor.I_P ^ cur_scaling[:I]
 
   cur_tau_E *= cur_reactor.R_0 ^ cur_scaling[:R]

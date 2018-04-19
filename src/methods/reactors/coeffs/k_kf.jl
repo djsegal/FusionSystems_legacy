@@ -1,13 +1,13 @@
 @symbol_func function K_KF(cur_reactor::AbstractReactor)
   cur_K = cur_reactor.max_q_95
 
+  cur_K *= K_I(cur_reactor)
+
   cur_K /= 5
 
   cur_K /= cur_reactor.epsilon ^ 2
 
   cur_K /= _f_q(cur_reactor)
-
-  cur_K /= K_I(cur_reactor)
 
   cur_K
 end
