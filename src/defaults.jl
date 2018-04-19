@@ -3,6 +3,9 @@ const integral_offset = 1e-8
 const integral_zero = 0.0 + integral_offset
 const integral_one = 1.0 - integral_offset
 
+const min_R_0 = 0.25
+const max_R_0 = 250
+
 const h_mode_scaling = Dict(
   :constant => 0.145,
   :I => 0.93,
@@ -30,3 +33,9 @@ const bosch_hale_coeffs = [
   -1.06750e-4,
   +1.36600e-5
 ]
+
+const secondary_limits = OrderedDict(
+  :beta => "TB",
+  :kink => "KF",
+  :pcap => "PC"
+)

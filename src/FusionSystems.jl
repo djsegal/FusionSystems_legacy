@@ -7,6 +7,8 @@ module FusionSystems
   using SymEngine
   using Unitful
   using QuadGK
+  using Roots
+
 
   include("abstracts.jl")
   include("defaults.jl")

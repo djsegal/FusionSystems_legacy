@@ -24,6 +24,8 @@ include("cost.jl")
 include("surface_area.jl")
 include("volume.jl")
 
+include("solve.jl")
+
 include("coeffs/index.jl")
 include("powers/index.jl")
 
