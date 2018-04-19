@@ -18,6 +18,9 @@ include("phi_total.jl")
 include("delta_x.jl")
 include("kappa_x.jl")
 
+include("magnetic_energy.jl")
+include("cost.jl")
+
 include("surface_area.jl")
 include("volume.jl")
 
