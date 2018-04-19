@@ -25,3 +25,4 @@ include("powers/index.jl")
 include("composites/index.jl")
 include("conversions/index.jl")
 
+include("calculations/index.jl")
