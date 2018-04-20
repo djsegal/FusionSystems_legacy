@@ -7,7 +7,7 @@ const min_R_0 = 0.25
 const max_R_0 = 250
 
 const h_mode_scaling = Dict(
-  :constant => 0.145,
+  :constant => 0.1445,
   :I => 0.93,
   :R => 1.39,
   :a => 0.58,
