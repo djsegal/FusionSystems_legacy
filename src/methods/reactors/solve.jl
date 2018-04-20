@@ -97,7 +97,7 @@ end
 function _solve_cur_equation(cur_eq::SymEngine.Basic, cur_min::Number=min_R_0, cur_max::Number=max_R_0, cur_depth::Int=0)
   cur_R_0 = NaN
 
-  ( cur_depth > 8 ) && return cur_R_0
+  ( cur_depth > 3 ) && return cur_R_0
 
   try
     cur_R_0 = fzero(cur_eq, cur_min, cur_max)
