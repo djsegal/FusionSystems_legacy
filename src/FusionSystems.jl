@@ -9,7 +9,6 @@ module FusionSystems
   using QuadGK
   using Roots
 
-
   include("abstracts.jl")
   include("defaults.jl")
 
