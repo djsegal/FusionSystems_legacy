@@ -37,7 +37,9 @@
 
   N_G::AbstractSymbol = 1.2
 
-  eta_CD::AbstractSymbol = 0.256
+  eta_CD_sat::AbstractSymbol = 0.256
+  T_CD_sat::AbstractSymbol = 30.0
+
   eta_T::AbstractSymbol = 0.352
 
   tau_FT::AbstractSymbol = 7200.0
@@ -72,6 +74,8 @@
 
   magnetic_energy::AbstractCalculated = nothing
   cost::AbstractCalculated = nothing
+
+  eta_CD::AbstractCalculated = nothing
 end
 
 function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)

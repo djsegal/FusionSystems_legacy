@@ -23,6 +23,8 @@ function _G_I_P(cur_reactor::AbstractReactor)
 
   cur_denominator *= sqrt(cur_reactor.T_bar) ^ 3
 
+  cur_denominator -= _G_I_CD_term(cur_reactor)
+
   cur_denominator += 1
 
   cur_G = cur_numerator
@@ -35,9 +37,23 @@ end
 function _G_I_S(cur_reactor::AbstractReactor)
   cur_G = 1.0
 
-  cur_G -= K_LH(cur_reactor) * cur_reactor.sigma_v
+  cur_G -= _G_I_CD_term(cur_reactor)
 
   cur_G ^= -1
 
   cur_G
+end
+
+function _G_I_CD_term(cur_reactor::AbstractReactor)
+  cur_ratio = cur_reactor.T_bar
+
+  cur_ratio /= cur_reactor.T_CD_sat
+
+  cur_term = K_CD(cur_reactor)
+
+  cur_term *= tanh( 2 * cur_ratio )
+
+  cur_term *= cur_reactor.sigma_v
+
+  cur_term
 end

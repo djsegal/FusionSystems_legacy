@@ -1,7 +1,7 @@
-@symbol_func function K_LH(cur_reactor::AbstractReactor)
+@symbol_func function K_CD(cur_reactor::AbstractReactor)
   cur_K = K_F(cur_reactor)
 
-  cur_K *= cur_reactor.eta_CD
+  cur_K *= cur_reactor.eta_CD_sat
 
   cur_K /= cur_reactor.Q
 

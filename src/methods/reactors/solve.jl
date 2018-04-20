@@ -33,6 +33,8 @@ function solve!(cur_reactor::AbstractReactor, cur_limit::Symbol)
   cur_reactor.volume = volume(cur_reactor)
   cur_reactor.magnetic_energy = magnetic_energy(cur_reactor)
 
+  cur_reactor.eta_CD = calc_eta_CD(cur_reactor)
+
   cur_reactor.is_good = !isnan(cur_reactor.R_0)
 
   cur_reactor.is_solved = true
