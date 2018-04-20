@@ -6,7 +6,9 @@ mutable struct Sweep <: AbstractSweep
   pcap_reactors::Vector{AbstractReactor}
 end
 
-function Sweep(cur_T_bar_list::Any)
+function Sweep(cur_T_bar_list::Any; cur_kwargs...)
+  cur_dict = Dict(cur_kwargs)
+
   cur_sweep = Sweep(
     cur_T_bar_list, [], [], []
   )
@@ -17,9 +19,11 @@ function Sweep(cur_T_bar_list::Any)
     cur_reactor_list = getfield(cur_sweep, cur_field_symbol)
 
     for cur_T_bar in cur_sweep.T_bar_list
+      cur_reactor = Reactor(cur_T_bar, cur_dict)
+
       push!(
         cur_reactor_list,
-        solve!(Reactor(cur_T_bar), cur_limit)
+        solve!(cur_reactor, cur_limit)
       )
     end
   end

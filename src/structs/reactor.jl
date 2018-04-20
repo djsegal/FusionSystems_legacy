@@ -74,7 +74,7 @@
   cost::AbstractCalculated = nothing
 end
 
-function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs)
+function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
   for (cur_key, cur_value) in cur_kwargs
     setfield!(cur_reactor, cur_key, cur_value)
   end
@@ -83,7 +83,13 @@ end
 function Reactor(cur_temp::AbstractSymbol; cur_kwargs...)
   cur_dict = Dict(cur_kwargs)
 
-  if haskey(cur_dict, :deck)
+  cur_reactor = Reactor(cur_temp, cur_dict)
+
+  cur_reactor
+end
+
+function Reactor(cur_temp::AbstractSymbol, cur_dict::Dict)
+  if haskey(cur_dict, :deck) && cur_dict[:deck] != nothing
     cur_deck_symbol = Symbol("$(cur_dict[:deck])_deck")
     cur_deck_func = getfield(FusionSystems, cur_deck_symbol)
 
