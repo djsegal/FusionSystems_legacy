@@ -27,6 +27,8 @@ function solve!(cur_reactor::AbstractReactor, cur_limit::Symbol)
   cur_reactor.norm_q_95 /= cur_reactor.max_q_95
   cur_reactor.norm_P_E /= cur_reactor.max_P_E
 
+  cur_reactor.norm_q_95 ^= -1
+
   cur_reactor.cost = cost(cur_reactor)
   cur_reactor.volume = volume(cur_reactor)
   cur_reactor.magnetic_energy = magnetic_energy(cur_reactor)
