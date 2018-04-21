@@ -11,7 +11,7 @@
 
   cur_tau_E *= a(cur_reactor) ^ cur_scaling[:a]
 
-  cur_tau_E *= cur_reactor.kappa_95 ^ cur_scaling[:kappa]
+  cur_tau_E *= kappa_tau(cur_reactor) ^ cur_scaling[:kappa]
 
   cur_tau_E *= cur_reactor.n_bar ^ cur_scaling[:n]
 
