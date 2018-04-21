@@ -19,7 +19,7 @@
   is_solved::Bool = false
   is_good::Bool = true
 
-  H::AbstractSymbol = 1.0
+  H::AbstractSymbol = 1.1
   Q::AbstractSymbol = 39.86
 
   epsilon::AbstractSymbol = 0.3226
@@ -32,7 +32,7 @@
   Z_eff::AbstractSymbol = 2.584
   f_D::AbstractSymbol = 0.9
 
-  A::AbstractSymbol = 2.5
+  A::AbstractSymbol = 2.735
 
   l_i::AbstractSymbol = 1.155
   rho_m::AbstractSymbol = 0.6
@@ -44,15 +44,15 @@
 
   eta_T::AbstractSymbol = 0.352
 
-  tau_FT::AbstractSymbol = 7200.0
+  tau_FT::AbstractSymbol = 7273.0
   C_saw::AbstractSymbol = 1.0
   C_ejima::AbstractSymbol = 0.3
 
   pi::AbstractSymbol = AbstractFloat(Base.pi)
 
-  B_OH::AbstractSymbol = 12.8
-  R_OH::AbstractSymbol = 2.89
-  dR_OH::AbstractSymbol = 0.82
+  B_OH::AbstractSymbol = 12.77
+  R_OH::AbstractSymbol = 2.483
+  dR_OH::AbstractSymbol = 0.8181
 
   max_beta_N::AbstractSymbol = 0.02591
   max_q_95::AbstractSymbol = 3.247
