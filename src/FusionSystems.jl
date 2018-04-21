@@ -24,8 +24,6 @@ module FusionSystems
   function __init__()
     global const rho_sym = symbols(:rho)
 
-    global const bootstrap_gamma_sym = symbols(:bootstrap_gamma)
-
     global const symbol_scaling = Dict(
       zip(
         scaling_keys,
