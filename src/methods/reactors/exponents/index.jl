@@ -1,5 +1,5 @@
-include("gamma_pb.jl")
+include("lambda_pb.jl")
 
-include("gamma_tb.jl")
-include("gamma_kf.jl")
-include("gamma_pc.jl")
+include("lambda_tb.jl")
+include("lambda_kf.jl")
+include("lambda_pc.jl")

@@ -47,9 +47,9 @@ end
 function _solve(cur_reactor::AbstractReactor, cur_limit::Symbol)
   cur_mapping = secondary_limits[cur_limit]
 
-  cur_gamma = _getvalue(cur_reactor, cur_mapping, "gamma")
+  cur_lambda = _getvalue(cur_reactor, cur_mapping, "lambda")
 
-  if iszero(cur_gamma)
+  if iszero(cur_lambda)
     cur_R_0 = _solve_one_equation(cur_reactor, cur_mapping)
   else
     cur_R_0 = _solve_two_equations(cur_reactor, cur_mapping)
@@ -85,11 +85,11 @@ end
 function _solve_two_equations(cur_reactor::AbstractReactor, cur_mapping::AbstractString)
   cur_lhs = K_PB(cur_reactor)
   cur_lhs *= G_PB(cur_reactor)
-  cur_lhs ^= 1 / gamma_PB(cur_reactor)
+  cur_lhs ^= 1 / lambda_PB(cur_reactor)
 
   cur_rhs = _getvalue(cur_reactor, cur_mapping, "K")
   cur_rhs *= _getvalue(cur_reactor, cur_mapping, "G")
-  cur_rhs ^= 1 / _getvalue(cur_reactor, cur_mapping, "gamma")
+  cur_rhs ^= 1 / _getvalue(cur_reactor, cur_mapping, "lambda")
 
   cur_eq = cur_lhs - cur_rhs
 
