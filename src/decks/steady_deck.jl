@@ -1,5 +1,6 @@
-function steady_deck()
+function steady_deck(cur_T_bar::AbstractSymbol)
   Reactor(
+    T_bar = cur_T_bar,
     is_pulsed = false,
 
     H = 1.0,

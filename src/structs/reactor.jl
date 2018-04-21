@@ -1,5 +1,5 @@
 @with_kw mutable struct Reactor <: AbstractReactor
-  T_bar::AbstractSymbol = symbols(:T_bar)
+  T_bar::AbstractSymbol
 
   n_bar::AbstractSymbol = symbols(:n_bar)
   I_P::AbstractSymbol = symbols(:I_P)
@@ -86,6 +86,15 @@ end
 
 function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
   for (cur_key, cur_value) in cur_kwargs
+    cur_field = getfield(cur_reactor, cur_key)
+
+    value_type = eltype(cur_value)
+    field_type = eltype(cur_field)
+
+    if value_type <: Int && !(field_type <: Int)
+      cur_value = float(cur_value)
+    end
+
     setfield!(cur_reactor, cur_key, cur_value)
   end
 end
@@ -103,12 +112,10 @@ function Reactor(cur_temp::AbstractSymbol, cur_dict::Dict)
     cur_deck_symbol = Symbol("$(cur_dict[:deck])_deck")
     cur_deck_func = getfield(FusionSystems, cur_deck_symbol)
 
-    cur_reactor = cur_deck_func()
+    cur_reactor = cur_deck_func(cur_temp)
   else
-    cur_reactor = Reactor()
+    cur_reactor = Reactor(T_bar=cur_temp)
   end
-
-  cur_reactor.T_bar = cur_temp
 
   _Reactor!(cur_reactor, cur_dict)
 
@@ -148,7 +155,7 @@ function Reactor(cur_temp::AbstractSymbol, cur_dict::Dict)
   cur_reactor
 end
 
-function SymbolicReactor(; cur_kwargs...)
+function SymbolicReactor(cur_temp::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
   cur_dict = Dict(cur_kwargs)
 
   cur_scaling = haskey(cur_dict, :mode_scaling) ?
@@ -157,13 +164,14 @@ function SymbolicReactor(; cur_kwargs...)
   delete!(cur_dict, :mode_scaling)
 
   cur_reactor = Reactor(
+    T_bar = cur_temp,
     is_symbolic = true,
     mode_scaling = cur_scaling
   )
 
-  _Reactor!(cur_reactor, cur_dict)
-
   for cur_field_name in fieldnames(cur_reactor)
+    ( cur_field_name == :T_bar ) && continue
+
     cur_field = getfield(cur_reactor, cur_field_name)
     isa(cur_field, AbstractFloat) || continue
 
@@ -171,5 +179,13 @@ function SymbolicReactor(; cur_kwargs...)
     setfield!(cur_reactor, cur_field_name, cur_field)
   end
 
+  _Reactor!(cur_reactor, cur_dict)
+
   cur_reactor
 end
+
+Reactor(cur_temp::Number; cur_kwargs...) =
+  Reactor(float(cur_temp); cur_kwargs...)
+
+SymbolicReactor(cur_temp::Number; cur_kwargs...) =
+  SymbolicReactor(float(cur_temp); cur_kwargs...)

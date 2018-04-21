@@ -1,5 +1,6 @@
-function default_deck()
+function default_deck(cur_T_bar::AbstractSymbol)
   Reactor(
+    T_bar = cur_T_bar,
     H = 1.1,
     Q = 39.86,
     epsilon = 0.3226,
