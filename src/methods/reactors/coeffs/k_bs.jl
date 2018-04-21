@@ -26,7 +26,7 @@ end
 
     cur_value *= sqrt(cur_rho) ^ 5
 
-    cur_value /= _b_theta(cur_gamma, cur_rho)
+    cur_value /= b_p(cur_reactor.bootstrap_gamma, cur_rho)
 
     cur_value
   end
@@ -43,28 +43,4 @@ end
   cur_C_B *= cur_nu_n + 0.054 * cur_nu_T
 
   cur_C_B
-end
-
-function _b_theta(cur_gamma::SymEngine.Basic, cur_rho::SymEngine.Basic, use_default::Bool=false)
-  use_default && return _b_theta_default(cur_gamma, cur_rho)
-  symbols(:b_theta)
-end
-
-function _b_theta(cur_gamma::AbstractFloat, cur_rho::AbstractFloat)
-  _b_theta_default(cur_gamma, cur_rho)
-end
-
-function _b_theta_default(cur_gamma::AbstractSymbol, cur_rho::AbstractSymbol)
-  cur_repeat = 1 + cur_gamma
-
-  cur_b_theta = cur_gamma * cur_rho ^ 2
-  cur_b_theta -= cur_repeat
-
-  cur_b_theta *= -exp( cur_gamma * cur_rho ^ 2 )
-  cur_b_theta -= cur_repeat
-
-  cur_b_theta /= cur_rho
-  cur_b_theta /= exp(cur_gamma) - cur_repeat
-
-  cur_b_theta
 end

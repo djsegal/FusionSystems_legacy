@@ -9,6 +9,8 @@ include("geom_factor.jl")
 
 include("tau_e.jl")
 
+include("b_p.jl")
+
 include("alpha_i_star.jl")
 include("alpha_n_star.jl")
 include("alpha_r_star.jl")
