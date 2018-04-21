@@ -11,6 +11,8 @@
 
   mode_scaling::Dict = h_mode_scaling
 
+  deck::Union{Void, Symbol} = nothing
+
   is_pulsed::Bool = true
   is_symbolic::Bool = false
 
@@ -103,8 +105,6 @@ function Reactor(cur_temp::AbstractSymbol, cur_dict::Dict)
   else
     cur_reactor = Reactor()
   end
-
-  delete!(cur_dict, :deck)
 
   cur_reactor.T_bar = cur_temp
 
