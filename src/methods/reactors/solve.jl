@@ -13,7 +13,11 @@ function solve!(cur_reactor::AbstractReactor, cur_limit::Symbol)
   cur_reactor.p_bar = p_bar(cur_reactor)
   cur_reactor.P_F = P_F(cur_reactor)
 
+  cur_reactor.eta_CD = calc_eta_CD(cur_reactor)
+
   cur_reactor.f_BS = calc_f_BS(cur_reactor)
+  cur_reactor.f_CD = calc_f_CD(cur_reactor)
+  cur_reactor.f_ID = calc_f_ID(cur_reactor)
 
   cur_reactor.beta_N = calc_beta_N(cur_reactor)
   cur_reactor.q_95 = calc_q_95(cur_reactor)
@@ -32,8 +36,6 @@ function solve!(cur_reactor::AbstractReactor, cur_limit::Symbol)
   cur_reactor.cost = cost(cur_reactor)
   cur_reactor.volume = volume(cur_reactor)
   cur_reactor.magnetic_energy = magnetic_energy(cur_reactor)
-
-  cur_reactor.eta_CD = calc_eta_CD(cur_reactor)
 
   cur_reactor.is_good = !isnan(cur_reactor.R_0)
 

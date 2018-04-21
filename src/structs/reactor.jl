@@ -69,6 +69,8 @@
   norm_P_E::AbstractCalculated = nothing
 
   f_BS::AbstractCalculated = nothing
+  f_CD::AbstractCalculated = nothing
+  f_ID::AbstractCalculated = nothing
 
   volume::AbstractCalculated = nothing
 
