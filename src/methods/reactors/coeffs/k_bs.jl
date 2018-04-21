@@ -24,7 +24,7 @@ end
 
     cur_value *= sqrt(cur_rho) ^ 5
 
-    cur_value /= b_p(cur_reactor.bootstrap_gamma, cur_rho)
+    cur_value /= b_p(cur_reactor.gamma, cur_rho)
 
     cur_value
   end
