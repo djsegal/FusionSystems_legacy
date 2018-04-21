@@ -1,6 +1,4 @@
-@symbol_func function geom_factor(cur_reactor::AbstractReactor)
-  cur_delta = cur_reactor.delta_95
-
+@symbol_func function geom_factor(cur_reactor::AbstractReactor, cur_delta::AbstractSymbol)
   cur_factor = 9.0
 
   cur_factor -= 2 * cur_delta
@@ -8,6 +6,14 @@
   cur_factor -= _x_aa_of_pi(cur_delta)
 
   cur_factor /= 8
+
+  cur_factor
+end
+
+@symbol_func function geom_factor(cur_reactor::AbstractReactor)
+  cur_delta = cur_reactor.delta_95
+
+  cur_factor = geom_factor(cur_reactor, cur_delta)
 
   cur_factor
 end
