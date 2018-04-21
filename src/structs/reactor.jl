@@ -36,8 +36,8 @@
 
   l_i::AbstractSymbol = 1.155
 
-  rho_m::AbstractCalculated = nothing
-  bootstrap_gamma::AbstractCalculated = nothing
+  rho_m::AbstractSymbol = symbols(:rho_m)
+  bootstrap_gamma::AbstractSymbol = symbols(:bootstrap_gamma)
 
   N_G::AbstractSymbol = 1.2
 
@@ -119,7 +119,7 @@ function Reactor(cur_temp::AbstractSymbol, cur_dict::Dict)
 
   _Reactor!(cur_reactor, cur_dict)
 
-  if cur_reactor.bootstrap_gamma == nothing
+  if isa(cur_reactor.bootstrap_gamma, SymEngine.Basic)
     cur_rhs(cur_gamma) = quadgk(
       cur_rho -> cur_rho * b_p(cur_gamma, cur_rho)^2,
       integral_zero,
@@ -142,10 +142,10 @@ function Reactor(cur_temp::AbstractSymbol, cur_dict::Dict)
     cur_reactor.bootstrap_gamma = cur_gamma
   end
 
-  if cur_reactor.rho_m == nothing
+  if isa(cur_reactor.rho_m, SymEngine.Basic)
     cur_gamma = cur_reactor.bootstrap_gamma
     if cur_gamma < 1
-      cur_reactor.rho_m = 0
+      cur_reactor.rho_m = 0.0
     else
       cur_reactor.rho_m = sqrt( cur_gamma - 1 )
       cur_reactor.rho_m /= sqrt( cur_gamma )
