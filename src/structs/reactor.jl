@@ -35,7 +35,9 @@
   A::AbstractSymbol = 2.735
 
   l_i::AbstractSymbol = 1.155
-  rho_m::AbstractSymbol = 0.6
+
+  rho_m::AbstractCalculated = nothing
+  bootstrap_gamma::AbstractCalculated = nothing
 
   N_G::AbstractSymbol = 1.2
 
@@ -109,6 +111,39 @@ function Reactor(cur_temp::AbstractSymbol, cur_dict::Dict)
   cur_reactor.T_bar = cur_temp
 
   _Reactor!(cur_reactor, cur_dict)
+
+  if cur_reactor.bootstrap_gamma == nothing
+    cur_rhs(cur_gamma) = quadgk(
+      cur_rho -> cur_rho * b_p(cur_gamma, cur_rho)^2,
+      integral_zero,
+      integral_one
+    )[1]
+
+    cur_lhs = cur_reactor.l_i
+    cur_lhs *= 1 + cur_reactor.kappa_95 ^ 2
+    cur_lhs /= 4 * cur_reactor.kappa_95
+
+    cur_gamma = 0.0
+    for cur_attempt in 1:10
+      cur_gamma = fzero(
+        tmp_gamma -> cur_rhs(tmp_gamma) - cur_lhs,
+        rand()
+      )
+
+      iszero(cur_gamma) || break
+    end
+    cur_reactor.bootstrap_gamma = cur_gamma
+  end
+
+  if cur_reactor.rho_m == nothing
+    cur_gamma = cur_reactor.bootstrap_gamma
+    if cur_gamma < 1
+      cur_reactor.rho_m = 0
+    else
+      cur_reactor.rho_m = sqrt( cur_gamma - 1 )
+      cur_reactor.rho_m /= sqrt( cur_gamma )
+    end
+  end
 
   cur_reactor
 end

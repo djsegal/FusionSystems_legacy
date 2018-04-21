@@ -17,8 +17,6 @@ end
 
   cur_nu_T = cur_reactor.nu_T
 
-  cur_gamma = 1 / ( 1 - cur_reactor.rho_m ^ 2 )
-
   cur_func = function (cur_rho)
     cur_value = 1.0 - cur_rho ^ 2
 

@@ -13,7 +13,6 @@ function steady_deck()
     f_D = 0.9,
     A = 2.5,
     N_G = 0.9,
-    rho_m = 0.7,
     eta_CD_sat = 0.35,
     T_CD_sat = 30.0,
 

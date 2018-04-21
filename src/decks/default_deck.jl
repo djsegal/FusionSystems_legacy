@@ -11,7 +11,6 @@ function default_deck()
     f_D = 0.9,
     A = 2.735,
     l_i = 1.155,
-    rho_m = 0.6,
     N_G = 1.2,
     eta_CD_sat = 0.35,
     T_CD_sat = 30.0,
