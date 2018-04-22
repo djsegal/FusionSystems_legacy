@@ -47,7 +47,7 @@
   eta_CD_sat::AbstractSymbol = 0.35
   T_CD_sat::AbstractSymbol = 30.0
 
-  eta_T::AbstractSymbol = 0.352
+  eta_T::AbstractSymbol = 0.3531
 
   tau_FT::AbstractSymbol = 7273.0
   C_saw::AbstractSymbol = 1.0
