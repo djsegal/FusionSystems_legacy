@@ -14,8 +14,10 @@ end
 
 @symbol_func function _C_B(cur_reactor::AbstractReactor)
   cur_nu_n = cur_reactor.nu_n
-
   cur_nu_T = cur_reactor.nu_T
+
+  cur_nu_n += 0.75 * cur_reactor.nu_n_offset
+  cur_nu_T += 0.75 * cur_reactor.nu_T_offset
 
   cur_func = function (cur_rho)
     cur_value = 1.0 - cur_rho ^ 2

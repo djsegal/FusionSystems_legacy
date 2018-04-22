@@ -10,6 +10,8 @@ function steady_deck(cur_T_bar::AbstractSymbol)
     delta_95 = 0.4,
     nu_n = 0.4,
     nu_T = 1.1,
+    nu_n_offset= 0.0,
+    nu_T_offset= 0.0,
     Z_eff = 1.5,
     f_D = 0.9,
     A = 2.5,
