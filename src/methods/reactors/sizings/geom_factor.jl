@@ -13,7 +13,7 @@ end
 @symbol_func function geom_factor(cur_reactor::AbstractReactor)
   cur_delta = cur_reactor.delta_95
 
-  cur_factor = geom_factor(cur_reactor, cur_delta)
+  cur_factor = geom_factor(cur_reactor, cur_delta, is_direct_call)
 
   cur_factor
 end
