@@ -100,6 +100,46 @@ function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
 
     setfield!(cur_reactor, cur_key, cur_value)
   end
+
+  isa(cur_reactor.kappa_95, AbstractFloat) || return
+
+  if isa(cur_reactor.l_i, SymEngine.Basic)
+    if isa(cur_reactor.rho_m, AbstractFloat)
+      isa(cur_reactor.gamma, SymEngine.Basic) &&
+        ( cur_reactor.gamma = 1 / ( 1 - cur_reactor.rho_m ) )
+    end
+
+    cur_reactor.l_i = int_b_p(cur_reactor.gamma)
+    cur_reactor.l_i /= 1 + cur_reactor.kappa_95 ^ 2
+    cur_reactor.l_i *= 4 * cur_reactor.kappa_95
+  end
+
+  if isa(cur_reactor.gamma, SymEngine.Basic)
+    cur_lhs = cur_reactor.l_i
+    cur_lhs *= 1 + cur_reactor.kappa_95 ^ 2
+    cur_lhs /= 4 * cur_reactor.kappa_95
+
+    cur_gamma = 0.0
+    for cur_attempt in 1:10
+      cur_gamma = fzero(
+        tmp_gamma -> int_b_p(tmp_gamma) - cur_lhs,
+        rand()
+      )
+
+      iszero(cur_gamma) || break
+    end
+    cur_reactor.gamma = cur_gamma
+  end
+
+  if isa(cur_reactor.rho_m, SymEngine.Basic)
+    cur_gamma = cur_reactor.gamma
+    if cur_gamma < 1
+      cur_reactor.rho_m = 0.0
+    else
+      cur_reactor.rho_m = sqrt( cur_gamma - 1 )
+      cur_reactor.rho_m /= sqrt( cur_gamma )
+    end
+  end
 end
 
 function Reactor(cur_temp::AbstractSymbol; cur_kwargs...)
@@ -122,40 +162,19 @@ function Reactor(cur_temp::AbstractSymbol, cur_dict::Dict)
 
   _Reactor!(cur_reactor, cur_dict)
 
-  if isa(cur_reactor.gamma, SymEngine.Basic)
-    cur_rhs(cur_gamma) = quadgk(
-      cur_rho -> cur_rho * b_p(cur_gamma, cur_rho)^2,
-      integral_zero,
-      integral_one
-    )[1]
-
-    cur_lhs = cur_reactor.l_i
-    cur_lhs *= 1 + cur_reactor.kappa_95 ^ 2
-    cur_lhs /= 4 * cur_reactor.kappa_95
-
-    cur_gamma = 0.0
-    for cur_attempt in 1:10
-      cur_gamma = fzero(
-        tmp_gamma -> cur_rhs(tmp_gamma) - cur_lhs,
-        rand()
-      )
-
-      iszero(cur_gamma) || break
-    end
-    cur_reactor.gamma = cur_gamma
-  end
-
-  if isa(cur_reactor.rho_m, SymEngine.Basic)
-    cur_gamma = cur_reactor.gamma
-    if cur_gamma < 1
-      cur_reactor.rho_m = 0.0
-    else
-      cur_reactor.rho_m = sqrt( cur_gamma - 1 )
-      cur_reactor.rho_m /= sqrt( cur_gamma )
-    end
-  end
-
   cur_reactor
+end
+
+function _SymbolizeReactor!(cur_reactor::AbstractReactor)
+  for cur_field_name in fieldnames(cur_reactor)
+    ( cur_field_name == :T_bar ) && continue
+
+    cur_field = getfield(cur_reactor, cur_field_name)
+    isa(cur_field, AbstractFloat) || continue
+
+    cur_field = symbols(cur_field_name)
+    setfield!(cur_reactor, cur_field_name, cur_field)
+  end
 end
 
 function SymbolicReactor(cur_temp::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
@@ -172,15 +191,20 @@ function SymbolicReactor(cur_temp::AbstractSymbol=symbols(:T_bar); cur_kwargs...
     mode_scaling = cur_scaling
   )
 
-  for cur_field_name in fieldnames(cur_reactor)
-    ( cur_field_name == :T_bar ) && continue
+  _SymbolizeReactor!(cur_reactor)
+  _Reactor!(cur_reactor, cur_dict)
 
-    cur_field = getfield(cur_reactor, cur_field_name)
-    isa(cur_field, AbstractFloat) || continue
+  cur_reactor
+end
 
-    cur_field = symbols(cur_field_name)
-    setfield!(cur_reactor, cur_field_name, cur_field)
-  end
+function BaseReactor(cur_temp::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
+  cur_dict = Dict(cur_kwargs)
+
+  cur_reactor = Reactor(T_bar = cur_temp)
+
+  _SymbolizeReactor!(cur_reactor)
+
+  cur_reactor.pi = AbstractFloat(Base.pi)
 
   _Reactor!(cur_reactor, cur_dict)
 
@@ -192,3 +216,6 @@ Reactor(cur_temp::Number; cur_kwargs...) =
 
 SymbolicReactor(cur_temp::Number; cur_kwargs...) =
   SymbolicReactor(float(cur_temp); cur_kwargs...)
+
+BaseReactor(cur_temp::Number; cur_kwargs...) =
+  BaseReactor(float(cur_temp); cur_kwargs...)
