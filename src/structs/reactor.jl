@@ -81,7 +81,7 @@
 
   volume::AbstractCalculated = nothing
 
-  magnetic_energy::AbstractCalculated = nothing
+  W_M::AbstractCalculated = nothing
   cost::AbstractCalculated = nothing
 
   eta_CD::AbstractCalculated = nothing

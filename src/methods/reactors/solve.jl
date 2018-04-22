@@ -35,7 +35,7 @@ function solve!(cur_reactor::AbstractReactor, cur_limit::Symbol)
 
   cur_reactor.cost = cost(cur_reactor)
   cur_reactor.volume = volume(cur_reactor)
-  cur_reactor.magnetic_energy = magnetic_energy(cur_reactor)
+  cur_reactor.W_M = W_M(cur_reactor)
 
   cur_reactor.is_good = !isnan(cur_reactor.R_0)
 

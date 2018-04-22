@@ -1,4 +1,4 @@
-function magnetic_energy(cur_reactor::AbstractReactor)
+function W_M(cur_reactor::AbstractReactor)
   cur_energy = cur_reactor.B_0 ^ 2
 
   cur_energy *= volume(cur_reactor)

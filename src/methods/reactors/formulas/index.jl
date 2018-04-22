@@ -9,5 +9,5 @@ include("b_p.jl")
 
 include("phi_total.jl")
 
-include("magnetic_energy.jl")
+include("w_m.jl")
 include("cost.jl")
