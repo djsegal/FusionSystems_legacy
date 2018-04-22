@@ -37,6 +37,10 @@ function solve!(cur_reactor::AbstractReactor, cur_limit::Symbol)
   cur_reactor.volume = volume(cur_reactor)
   cur_reactor.W_M = W_M(cur_reactor)
 
+  cur_reactor.resistance = rho_spitzer(cur_reactor)
+  cur_reactor.voltage = V_L(cur_reactor)
+  cur_reactor.inductance = L_P(cur_reactor)
+
   cur_reactor.is_good = !isnan(cur_reactor.R_0)
 
   cur_reactor.is_solved = true

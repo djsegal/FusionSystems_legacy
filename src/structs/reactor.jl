@@ -79,6 +79,10 @@
   f_CD::AbstractCalculated = nothing
   f_ID::AbstractCalculated = nothing
 
+  resistance::AbstractCalculated = nothing
+  voltage::AbstractCalculated = nothing
+  inductance::AbstractCalculated = nothing
+
   volume::AbstractCalculated = nothing
 
   W_M::AbstractCalculated = nothing
