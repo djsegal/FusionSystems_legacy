@@ -18,7 +18,7 @@ function steady_deck(cur_T_bar::AbstractSymbol)
     N_G = 0.9,
     eta_CD_sat = 0.35,
     T_CD_sat = 30.0,
-
+    gamma = 1.96078,
     eta_T = 0.352,
 
     max_beta_N = 0.026,
