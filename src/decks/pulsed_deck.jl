@@ -28,6 +28,6 @@ function default_deck(cur_T_bar::AbstractSymbol)
     max_q_95 = 3.247,
     max_P_E = 1000.0,
     max_P_W = 2.5,
-    max_q_DV = 5.0
+    max_q_DV = 10.0
   )
 end

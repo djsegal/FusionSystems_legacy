@@ -6,6 +6,8 @@ mutable struct Sweep <: AbstractSweep
   beta_reactors::Vector{AbstractReactor}
   kink_reactors::Vector{AbstractReactor}
   pcap_reactors::Vector{AbstractReactor}
+  wall_reactors::Vector{AbstractReactor}
+  heat_reactors::Vector{AbstractReactor}
 end
 
 function Sweep(cur_T_bar_list::Any; cur_kwargs...)
@@ -16,7 +18,7 @@ function Sweep(cur_T_bar_list::Any; cur_kwargs...)
 
   cur_sweep = Sweep(
     cur_T_bar_list, cur_deck,
-    [], [], []
+    [], [], [], [], []
   )
 
   for cur_limit in keys(secondary_limits)

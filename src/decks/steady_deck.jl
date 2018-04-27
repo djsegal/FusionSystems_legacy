@@ -23,6 +23,8 @@ function steady_deck(cur_T_bar::AbstractSymbol)
 
     max_beta_N = 0.026,
     max_q_95 = 10.0,
-    max_P_E = 2500.0
+    max_P_E = 2500.0,
+    max_P_W = 2.5,
+    max_q_DV = 10.0
   )
 end

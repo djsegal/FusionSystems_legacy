@@ -37,5 +37,7 @@ const bosch_hale_coeffs = [
 const secondary_limits = OrderedDict(
   :beta => "TB",
   :kink => "KF",
-  :pcap => "PC"
+  :pcap => "PC",
+  :wall => "WL",
+  :heat => "DV"
 )

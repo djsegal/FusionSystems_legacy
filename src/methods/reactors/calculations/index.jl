@@ -7,7 +7,9 @@ include("calc_b_0.jl")
 
 include("calc_beta_n.jl")
 include("calc_q_95.jl")
+include("calc_q_dv.jl")
 include("calc_p_e.jl")
+include("calc_p_w.jl")
 
 include("calc_eta_CD.jl")
 

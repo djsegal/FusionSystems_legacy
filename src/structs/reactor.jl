@@ -61,7 +61,9 @@
 
   max_beta_N::AbstractSymbol = 0.02591
   max_q_95::AbstractSymbol = 3.247
+  max_q_DV::AbstractSymbol = 10.0
   max_P_E::AbstractSymbol = 1000.0
+  max_P_W::AbstractSymbol = 2.5
 
   tau_E::AbstractCalculated = nothing
   p_bar::AbstractCalculated = nothing
@@ -69,11 +71,15 @@
 
   beta_N::AbstractCalculated = nothing
   q_95::AbstractCalculated = nothing
+  q_DV::AbstractCalculated = nothing
   P_E::AbstractCalculated = nothing
+  P_W::AbstractCalculated = nothing
 
   norm_beta_N::AbstractCalculated = nothing
   norm_q_95::AbstractCalculated = nothing
+  norm_q_DV::AbstractCalculated = nothing
   norm_P_E::AbstractCalculated = nothing
+  norm_P_W::AbstractCalculated = nothing
 
   f_BS::AbstractCalculated = nothing
   f_CD::AbstractCalculated = nothing

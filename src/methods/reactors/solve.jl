@@ -16,20 +16,27 @@ function solve!(cur_reactor::AbstractReactor, cur_limit::Symbol)
   cur_reactor.eta_CD = calc_eta_CD(cur_reactor)
 
   cur_reactor.f_BS = calc_f_BS(cur_reactor)
+
   cur_reactor.f_CD = calc_f_CD(cur_reactor)
   cur_reactor.f_ID = calc_f_ID(cur_reactor)
 
   cur_reactor.beta_N = calc_beta_N(cur_reactor)
   cur_reactor.q_95 = calc_q_95(cur_reactor)
+  cur_reactor.q_DV = calc_q_DV(cur_reactor)
   cur_reactor.P_E = calc_P_E(cur_reactor)
+  cur_reactor.P_W = calc_P_W(cur_reactor)
 
   cur_reactor.norm_beta_N = calc_beta_N(cur_reactor)
   cur_reactor.norm_q_95 = calc_q_95(cur_reactor)
+  cur_reactor.norm_q_DV = calc_q_DV(cur_reactor)
   cur_reactor.norm_P_E = calc_P_E(cur_reactor)
+  cur_reactor.norm_P_W = calc_P_W(cur_reactor)
 
   cur_reactor.norm_beta_N /= cur_reactor.max_beta_N
   cur_reactor.norm_q_95 /= cur_reactor.max_q_95
+  cur_reactor.norm_q_DV /= cur_reactor.max_q_DV
   cur_reactor.norm_P_E /= cur_reactor.max_P_E
+  cur_reactor.norm_P_W /= cur_reactor.max_P_W
 
   cur_reactor.norm_q_95 ^= -1
 

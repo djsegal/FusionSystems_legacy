@@ -18,8 +18,12 @@ include("k_cd.jl")
 include("k_up.jl")
 include("k_dn.jl")
 
+include("k_w.jl")
+
 include("k_pb.jl")
 
 include("k_tb.jl")
 include("k_kf.jl")
 include("k_pc.jl")
+include("k_wl.jl")
+include("k_dv.jl")
