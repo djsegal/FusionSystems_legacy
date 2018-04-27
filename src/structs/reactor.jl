@@ -55,9 +55,9 @@
 
   pi::AbstractSymbol = AbstractFloat(Base.pi)
 
-  B_OH::AbstractSymbol = 12.77
-  R_OH::AbstractSymbol = 2.483
-  dR_OH::AbstractSymbol = 0.8181
+  B_CS::AbstractSymbol = 12.77
+  R_CS::AbstractSymbol = 2.483
+  dR_CS::AbstractSymbol = 0.8181
 
   max_beta_N::AbstractSymbol = 0.02591
   max_q_95::AbstractSymbol = 3.247

@@ -5,7 +5,9 @@
 
   cur_perimeter *= a(cur_reactor)
 
-  cur_perimeter *= _perimeter_shape_factor(cur_reactor)
+  cur_perimeter *= sqrt(
+    _perimeter_shape_factor(cur_reactor)
+  )
 
   cur_perimeter
 end
@@ -26,8 +28,6 @@ function _perimeter_shape_factor(cur_reactor::AbstractReactor)
   cur_factor += 1
 
   cur_factor /= 2
-
-  cur_factor ^= (1/2)
 
   cur_factor
 end

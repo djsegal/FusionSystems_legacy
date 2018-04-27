@@ -1,5 +1,5 @@
 @symbol_func function K_DV(cur_reactor::AbstractReactor)
-  cur_K = 27.753e-3
+  cur_K = 27.75e-3
 
   cur_K *= K_P(cur_reactor)
 

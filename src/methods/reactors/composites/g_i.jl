@@ -9,23 +9,30 @@
 end
 
 function _G_I_P(cur_reactor::AbstractReactor)
-  cur_numerator = K_UP(cur_reactor)
+  tmp_term = G_VI(cur_reactor)
+  tmp_term /= K_FT(cur_reactor)
 
-  cur_numerator *= cur_reactor.R_0
+  cur_G_VO = G_VO(cur_reactor)
 
-  cur_numerator *= sqrt(cur_reactor.T_bar)
+  cur_numerator =
+    ( K_CS(cur_numerator) * G_CS(cur_reactor) )
 
-  cur_numerator += 1
+  cur_numerator +=
+    ( K_VI(cur_reactor) * cur_G_VO )
 
-  cur_denominator = K_DN(cur_reactor)
+  cur_denominator = K_RU(cur_reactor)
 
-  cur_denominator *= cur_reactor.R_0 ^ 2
+  cur_denominator -=
+    ( K_VO(cur_reactor) * cur_G_VO )
 
-  cur_denominator *= sqrt(cur_reactor.T_bar) ^ 3
+  cur_numerator *= tmp_term
+  cur_denominator *= tmp_term
 
-  cur_denominator -= _G_I_CD_term(cur_reactor)
+  cur_numerator += 1.0
+  cur_denominator += 1.0
 
-  cur_denominator += 1
+  cur_denominator -=
+    ( K_CD(cur_reactor) * G_CD(cur_reactor) )
 
   cur_G = cur_numerator
 
@@ -37,23 +44,10 @@ end
 function _G_I_S(cur_reactor::AbstractReactor)
   cur_G = 1.0
 
-  cur_G -= _G_I_CD_term(cur_reactor)
+  cur_G -=
+    ( K_CD(cur_reactor) * G_CD(cur_reactor) )
 
   cur_G ^= -1
 
   cur_G
-end
-
-function _G_I_CD_term(cur_reactor::AbstractReactor)
-  cur_ratio = cur_reactor.T_bar
-
-  cur_ratio /= cur_reactor.T_CD_sat
-
-  cur_term = K_CD(cur_reactor)
-
-  cur_term *= tanh( 2 * cur_ratio )
-
-  cur_term *= cur_reactor.sigma_v
-
-  cur_term
 end

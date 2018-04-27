@@ -1,6 +1,11 @@
 include("g_law.jl")
 
 include("g_i.jl")
+include("g_cd.jl")
+
+include("g_cs.jl")
+include("g_vi.jl")
+include("g_vo.jl")
 
 include("g_pb.jl")
 

@@ -15,8 +15,9 @@ include("k_ru.jl")
 include("k_ft.jl")
 include("k_cd.jl")
 
-include("k_up.jl")
-include("k_dn.jl")
+include("k_cs.jl")
+include("k_vi.jl")
+include("k_vo.jl")
 
 include("k_w.jl")
 

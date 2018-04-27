@@ -7,7 +7,7 @@ include("tau_e.jl")
 
 include("b_p.jl")
 
-include("phi_total.jl")
+include("phi_cs.jl")
 
 include("w_m.jl")
 include("cost.jl")
