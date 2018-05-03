@@ -5,6 +5,15 @@ function solve!(cur_reactor::AbstractReactor, cur_limit::Symbol)
 
   cur_reactor.B_0 = calc_B_0(cur_reactor)
 
+  isnan(cur_reactor.B_0) &&
+    ( cur_reactor.R_0 = NaN )
+
+  cur_reactor.is_good = !isnan(cur_reactor.R_0)
+
+  cur_reactor.is_solved = true
+
+  cur_reactor.is_good || return cur_reactor
+
   cur_reactor.I_P = calc_I_P(cur_reactor)
 
   cur_reactor.n_bar = calc_n_bar(cur_reactor)
@@ -49,10 +58,6 @@ function solve!(cur_reactor::AbstractReactor, cur_limit::Symbol)
   cur_reactor.inductance = L_P(cur_reactor)
 
   cur_reactor.a = a(cur_reactor)
-
-  cur_reactor.is_good = !isnan(cur_reactor.R_0)
-
-  cur_reactor.is_solved = true
 
   cur_reactor
 end
