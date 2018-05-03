@@ -1,4 +1,8 @@
 @symbol_func function K_VI(cur_reactor::AbstractReactor)
+  cur_nu_n = cur_reactor.nu_n
+
+  cur_nu_T = cur_reactor.nu_T
+
   cur_K = 1.007
 
   cur_K /= K_BS(cur_reactor)
