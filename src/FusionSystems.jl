@@ -18,6 +18,7 @@ module FusionSystems
   include("methods/index.jl")
 
   include("decks/index.jl")
+  include("solutions/index.jl")
 
   export Reactor
 
