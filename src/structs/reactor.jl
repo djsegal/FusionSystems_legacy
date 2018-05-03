@@ -61,7 +61,7 @@
   max_q_95::AbstractSymbol = 3.247
   max_q_DV::AbstractSymbol = 10.0
   max_P_E::AbstractSymbol = 1000.0
-  max_P_W::AbstractSymbol = 2.5
+  max_P_W::AbstractSymbol = 8.0
 
   tau_E::AbstractCalculated = nothing
   p_bar::AbstractCalculated = nothing
