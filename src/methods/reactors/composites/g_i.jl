@@ -15,7 +15,7 @@ function _G_I_P(cur_reactor::AbstractReactor)
   cur_G_VO = G_VO(cur_reactor)
 
   cur_numerator =
-    ( K_CS(cur_numerator) * G_CS(cur_reactor) )
+    ( K_CS(cur_reactor) * G_CS(cur_reactor) )
 
   cur_numerator +=
     ( K_VI(cur_reactor) * cur_G_VO )
