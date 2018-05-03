@@ -1,11 +1,13 @@
 function calc_eta_CD(cur_reactor::AbstractReactor)
-  cur_ratio = cur_reactor.T_bar
+  cur_eta = cur_reactor.T_bar
 
-  cur_ratio /= cur_reactor.T_CD_sat
+  if cur_reactor.is_pulsed
+    cur_eta *= 0.21
+  else
+    cur_eta *= 1.2 / ( 5 + cur_reactor.Z_eff )
+  end
 
-  cur_eta = cur_reactor.eta_CD_sat
-
-  cur_eta *= tanh( 2 * cur_ratio )
+  cur_eta /= 10
 
   cur_eta
 end

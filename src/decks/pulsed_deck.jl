@@ -15,8 +15,6 @@ function pulsed_deck(cur_T_bar::AbstractSymbol)
     A = 2.735,
     l_i = 1.155,
     N_G = 1.2,
-    eta_CD_sat = 0.35,
-    T_CD_sat = 30.0,
     eta_T = 0.3531,
     tau_FT = 7273.0,
     C_saw = 1.0,
