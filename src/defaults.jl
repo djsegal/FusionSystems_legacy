@@ -6,6 +6,9 @@ const integral_one = 1.0 - integral_offset
 const min_R_0 = 0.25
 const max_R_0 = 250
 
+const E_F = 17.6
+const E_L = 4.8
+
 const h_mode_scaling = Dict(
   :constant => 0.1445,
   :I => 0.93,

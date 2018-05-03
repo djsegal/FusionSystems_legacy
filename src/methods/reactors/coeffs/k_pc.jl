@@ -5,7 +5,7 @@
 
   cur_K *= K_I(cur_reactor) ^ 2
 
-  cur_K *= 1.273
+  cur_K *= 1 + E_L / E_F
 
   cur_K *= cur_reactor.eta_T
 
