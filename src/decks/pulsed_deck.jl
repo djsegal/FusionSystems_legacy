@@ -1,4 +1,4 @@
-function default_deck(cur_T_bar::AbstractSymbol)
+function pulsed_deck(cur_T_bar::AbstractSymbol)
   BaseReactor(
     T_bar = cur_T_bar,
     H = 1.1,
