@@ -49,7 +49,6 @@ function solve!(cur_reactor::AbstractReactor, cur_limit::Symbol)
   cur_reactor.inductance = L_P(cur_reactor)
 
   cur_reactor.a = a(cur_reactor)
-  cur_reactor.B_V = B_V(cur_reactor)
 
   cur_reactor.is_good = !isnan(cur_reactor.R_0)
 

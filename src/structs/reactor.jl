@@ -95,8 +95,6 @@
   eta_CD::AbstractCalculated = nothing
 
   a::AbstractCalculated = nothing
-
-  B_V::AbstractCalculated = nothing
 end
 
 function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
