@@ -1,5 +1,5 @@
 function calc_q_DV(cur_reactor::AbstractReactor)
-  cur_q_DV = 18.31
+  cur_q_DV = 18.31e-3
 
   cur_q_DV *= 1 + cur_reactor.Q / 5.0
 
