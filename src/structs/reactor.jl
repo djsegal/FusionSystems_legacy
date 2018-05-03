@@ -45,6 +45,7 @@
   N_G::AbstractSymbol = 1.2
 
   eta_T::AbstractSymbol = 0.3531
+  eta_RF::AbstractSymbol = 0.4
 
   tau_FT::AbstractSymbol = 7273.0
   C_saw::AbstractSymbol = 1.0

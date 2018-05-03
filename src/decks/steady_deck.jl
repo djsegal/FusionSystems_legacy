@@ -18,6 +18,7 @@ function steady_deck(cur_T_bar::AbstractSymbol)
     N_G = 0.9,
     gamma = 1.96078,
     eta_T = 0.352,
+    eta_RF = 0.4,
 
     max_beta_N = 0.026,
     max_q_95 = 10.0,

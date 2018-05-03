@@ -16,3 +16,6 @@ include("v_l.jl")
 include("l_p.jl")
 
 include("rho_spitzer.jl")
+
+include("q_e.jl")
+include("f_rp.jl")
