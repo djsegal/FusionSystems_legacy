@@ -1,4 +1,6 @@
 @symbol_func function calc_sigma_v(cur_reactor::AbstractReactor)
+  is_positive(cur_reactor.T_bar) || return NaN
+
   cur_nu_n = cur_reactor.nu_n
 
   cur_func = function (cur_rho)

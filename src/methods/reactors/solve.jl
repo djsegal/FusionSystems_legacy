@@ -1,7 +1,10 @@
 function solve!(cur_reactor::AbstractReactor, cur_limit::Symbol)
   cur_reactor.sigma_v = calc_sigma_v(cur_reactor)
 
-  cur_reactor.R_0 = _solve(cur_reactor, cur_limit)
+  cur_R_0 = isnan(cur_reactor.sigma_v) ?
+    NaN : _solve(cur_reactor, cur_limit)
+
+  cur_reactor.R_0 = cur_R_0
 
   cur_reactor.B_0 = calc_B_0(cur_reactor)
 
