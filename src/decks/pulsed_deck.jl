@@ -25,8 +25,8 @@ function pulsed_deck(cur_T_bar::AbstractSymbol)
     R_CS = 2.483,
     dR_CS = 0.8181,
     max_beta_N = 0.02591,
-    max_q_95 = 3.247,
-    max_P_E = 1000.0,
+    max_q_95 = 2.5,
+    max_P_E = 1500.0,
     max_P_W = 8.0,
     max_q_DV = 10.0
   )

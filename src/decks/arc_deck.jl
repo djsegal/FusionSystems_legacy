@@ -24,8 +24,8 @@ function arc_deck(cur_T_bar::AbstractSymbol)
     eta_RF = 0.5,
 
     max_beta_N = 0.0259,
-    max_q_95 = 7.2,
-    max_P_E = 2500.0,
+    max_q_95 = 2.5,
+    max_P_E = 1500.0,
     max_P_W = 2.5,
     max_q_DV = 10.0
   )

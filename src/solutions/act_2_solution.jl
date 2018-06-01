@@ -14,5 +14,8 @@ function act_2_solution()
   cur_reactor.P_F = 2637
   cur_reactor.f_BS = 0.77
 
+  cur_reactor.beta_N = cur_reactor.max_beta_N
+  cur_reactor.q_95 = 8.0
+
   cur_reactor
 end

@@ -22,9 +22,9 @@ function act_2_deck(cur_T_bar::AbstractSymbol)
     eta_RF = 0.4,
 
     max_beta_N = 0.026,
-    max_q_95 = 8.0,
+    max_q_95 = 2.5,
 
-    max_P_E = 2500.0,
+    max_P_E = 1500.0,
 
     max_P_W = 1.46,
     max_q_DV = 10.0

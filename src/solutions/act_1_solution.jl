@@ -14,5 +14,8 @@ function act_1_solution()
   cur_reactor.P_F = 1813
   cur_reactor.f_BS = 0.91
 
+  cur_reactor.beta_N = cur_reactor.max_beta_N
+  cur_reactor.q_95 = 4.5
+
   cur_reactor
 end

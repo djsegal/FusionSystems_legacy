@@ -14,5 +14,8 @@ function pulsed_solution()
   cur_reactor.P_F = 2037
   cur_reactor.f_BS = 0.323
 
+  cur_reactor.beta_N = cur_reactor.max_beta_N
+  cur_reactor.q_95 = 3.247
+
   cur_reactor
 end

@@ -60,9 +60,9 @@
   dR_CS::AbstractSymbol = 0.8181
 
   max_beta_N::AbstractSymbol = 0.02591
-  max_q_95::AbstractSymbol = 3.247
+  max_q_95::AbstractSymbol = 2.5
   max_q_DV::AbstractSymbol = 10.0
-  max_P_E::AbstractSymbol = 1000.0
+  max_P_E::AbstractSymbol = 1500.0
   max_P_W::AbstractSymbol = 8.0
 
   tau_E::AbstractCalculated = nothing
