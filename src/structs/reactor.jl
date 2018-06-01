@@ -189,6 +189,35 @@ function _SymbolizeReactor!(cur_reactor::AbstractReactor)
   end
 end
 
+function _NanizeReactor!(cur_reactor::AbstractReactor)
+  for cur_field_name in fieldnames(cur_reactor)
+    ( cur_field_name == :T_bar ) && continue
+
+    cur_field = getfield(cur_reactor, cur_field_name)
+    isa(cur_field, AbstractFloat) ||
+      isa(cur_field, SymEngine.Basic) ||
+      continue
+
+    setfield!(cur_reactor, cur_field_name, NaN)
+  end
+end
+
+function NanReactor(cur_temp::AbstractSymbol, cur_dict::Dict)
+  cur_reactor = Reactor(T_bar = cur_temp)
+
+  _NanizeReactor!(cur_reactor)
+
+  cur_reactor
+end
+
+function NanReactor(cur_temp::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
+  cur_dict = Dict(cur_kwargs)
+
+  cur_reactor = NanReactor(cur_temp, cur_dict)
+
+  cur_reactor
+end
+
 function SymbolicReactor(cur_temp::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
   cur_dict = Dict(cur_kwargs)
 
@@ -231,3 +260,6 @@ SymbolicReactor(cur_temp::Number; cur_kwargs...) =
 
 BaseReactor(cur_temp::Number; cur_kwargs...) =
   BaseReactor(float(cur_temp); cur_kwargs...)
+
+NanReactor(cur_temp::Number; cur_kwargs...) =
+  NanReactor(float(cur_temp); cur_kwargs...)
