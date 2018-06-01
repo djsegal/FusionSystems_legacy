@@ -11,7 +11,9 @@ mutable struct Sweep <: AbstractSweep
 end
 
 function Sweep(cur_T_bar_list::Any; cur_kwargs...)
-  cur_dict = Dict(cur_kwargs)
+  cur_dict = Dict()
+
+  merge!(cur_dict, Dict(cur_kwargs))
 
   cur_deck = haskey(cur_dict, :deck) ?
     cur_dict[:deck] : nothing
