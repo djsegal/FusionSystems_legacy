@@ -44,3 +44,11 @@ const secondary_limits = OrderedDict(
   :wall => "WL",
   :heat => "DV"
 )
+
+const secondary_params = OrderedDict(
+  :beta => "beta_N",
+  :kink => "q_95",
+  :pcap => "P_E",
+  :wall => "P_W",
+  :heat => "q_DV"
+)
