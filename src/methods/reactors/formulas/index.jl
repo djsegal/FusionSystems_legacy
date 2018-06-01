@@ -19,3 +19,5 @@ include("rho_spitzer.jl")
 
 include("q_e.jl")
 include("f_rp.jl")
+
+include("f_duty.jl")

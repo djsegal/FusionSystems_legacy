@@ -18,6 +18,7 @@ function pulsed_deck(cur_T_bar::AbstractSymbol)
     eta_T = 0.3531,
     eta_RF = 0.4,
     tau_FT = 7273.0,
+    tau_WK = 1830.0,
     C_saw = 1.0,
     C_ejima = 0.3,
     B_CS = 12.77,
